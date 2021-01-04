@@ -49,7 +49,7 @@
 
 ## [실습] Linked List 직접 구현하기
 
-- JavaScript의 `class`를 이용해 Singly Linked List 및 Doubly Linked List 직접 구현하기
+- Java의 `class`를 이용해 Singly Linked List 및 Doubly Linked List 직접 구현하기
 - **구현 조건**
   - **단방향 연결 리스트 (Singly Linked List)**
     - `value`와 `next` property를 지닌 `Node` 클래스를 구현한다.
