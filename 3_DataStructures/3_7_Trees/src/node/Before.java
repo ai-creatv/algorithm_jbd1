@@ -18,7 +18,9 @@ class BinaryTree {
         Node [] nodeArray = new Node[array.length];
         for (int i = 0; i < array.length; i++) {
             nodeArray[i] = new Node(array[i], null, null);
-
+        }
+        
+        for (int i = 0; i < array.length; i++) {
             int left = i * 2 + 1;
             int right = i * 2 + 2;
 
