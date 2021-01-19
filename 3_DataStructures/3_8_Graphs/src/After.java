@@ -15,6 +15,8 @@ class Vertex {
 
 class Graph {
     List<Vertex> vertexList = new ArrayList<>();
+    boolean [] visitedArray;
+    boolean isFound;
 
     public void insert(int value, int [] adjVertices) {
         int vInd = vertexList.size();
@@ -33,11 +35,58 @@ class Graph {
     }
 
     public boolean bfs(int ind, int value) {
-        return true;
+        visitedArray = new boolean[vertexList.size()];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(ind);
+
+        while (!queue.isEmpty()) {
+            int vInd = queue.poll();
+
+            if (visitedArray[vInd]) {
+                continue;
+            }
+
+            Vertex v = vertexList.get(vInd);
+            visitedArray[vInd] = true;
+
+            if (v.value == value) {
+                return true;
+            }
+
+            for (int adjV: v.adjList) {
+                if (!visitedArray[adjV]) {
+                    queue.add(adjV);
+                }
+            }
+        }
+        return false;
     }
 
     public boolean dfs(int ind, int value) {
-        return true;
+        isFound = false;
+        visitedArray = new boolean[vertexList.size()];
+        dfsHelper(ind, value);
+        return isFound;
+    }
+
+    private void dfsHelper(int ind, int value) {
+        if (visitedArray[ind] || isFound) {
+            return;
+        }
+
+        visitedArray[ind] = true;
+
+        Vertex v = vertexList.get(ind);
+        if (v.value == value) {
+            isFound = true;
+            return;
+        }
+
+        for (int adjV: v.adjList) {
+            if (!visitedArray[adjV]) {
+                dfsHelper(adjV, value);
+            }
+        }
     }
 }
 
