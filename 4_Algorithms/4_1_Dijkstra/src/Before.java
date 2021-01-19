@@ -1,17 +1,28 @@
 import java.util.PriorityQueue;
 
-class Graph {
-    // TODO
+class Node implements Comparable<Node> {
+    public int index;
+    public int distance;
+
+    public Node(int index, int distance) {
+        this.index = index;
+        this.distance = distance;
+    }
+
+    @Override
+    public int compareTo(Node o) {
+        // TODO: Implement comparator
+    }
 }
 
 class Dijkstra {
-    static float INF = Float.POSITIVE_INFINITY;
-    static float [] dijkstra(int start, Graph graph) {
+    static int INF = Integer.MAX_VALUE;
+    static int [] dijkstra(int start, int [][][] graph) {
         int n = graph.length;
         
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Node> pq = new PriorityQueue<>();
         
-        float [] distances = new float [n];
+        int [] distances = new int [n];
         for (int i = 0; i < n; i++) {
             distances[i] = INF;
         }
@@ -24,22 +35,16 @@ class Dijkstra {
 
 class DijkstraTest {
     public static void main(String[] args) {
-        Graph graph = new Graph();
+        int start = 0;
+        int [][][] graph = {
+            {{2, 5}, {3, 2}}, // 0번 노드의 {인접 노드, 가중치}
+            {{3, 5}, {4, 3}}, // 1번 노드의 {인접 노드, 가중치}
+            {{0, 3}, {4, 9}}, // ...
+            {{0, 10}, {4, 2}},
+            {{2, 13}, {1, 3}}
+        };
 
-        graph.nodes.add(new Node())
-        
-        graph = [[(2, 5), (3, 2)], # (인접노드, 가중치)
-                 [(3, 5), (4, 3)],
-                 [(0, 3), (4, 9)],
-                 [(0, 10), (4, 2)],
-                 [(2, 13), (1, 3)]]
+        int [] distances = Dijkstra.dijkstra(start, graph);
+        System.out.println(Arrays.toString(distances));
     }
 }
-
-def dijkstra(start, graph):
-    n = len(graph)
-    heap = []
-    distances = [float('inf')] * n
-    
-
-
